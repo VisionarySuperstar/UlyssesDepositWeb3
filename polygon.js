@@ -34,16 +34,17 @@ try {
     const dParams = {
         hToken: "0x000be5Cf68aa3E2f0BfD6ACF53EfB06CB2E99941",//local Address
         token: "0xDDf7d080C82b8048BAAe54e376a3406572429b4e",//underlying Address
-        amount: parseEther("250000000000000000000000"),
-        deposit: parseEther("250000000000000000000000")
+        amount: "250000000000000000000000",
+        deposit: "250000000000000000000000"
     };
     const gParams = {
-        gasLimit: parseEther("500000"),
-        remoteBranchExecutionGas: parseEther("100000000000000")
+        gasLimit: 500000,
+        remoteBranchExecutionGas: 100000000000000
     };
     const hasFallbackToggled = true;
+
     const depositTx = await agentContract.callOutSignedAndBridge(
-        params, dParams, gParams, hasFallbackToggled
+        params, dParams, gParams, hasFallbackToggled, {value: parseEther("69")}
     );
     console.log("Deposit Transaction sent! Hash:", depositTx.hash);
     await depositTx.wait();
